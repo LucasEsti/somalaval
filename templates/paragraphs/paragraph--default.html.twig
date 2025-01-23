@@ -1,0 +1,145 @@
+{% block paragraph %}
+	<div class="row">
+		{% if paragraph.bundle() == "texte_image" %}
+			{% set val = content.field_position|field_value %}
+			{% set taille = content.field_taille|render|striptags|trim %}
+			{% set col = ['col-md-6','col-md-6'] %}
+			{% if taille == '70%' %}
+				{% set col = ['col-md-5','col-md-7'] %}
+			{% endif %}
+			{% if taille == '60%' %}
+				{% set col = ['col-md-4','col-md-8'] %}
+			{% endif %}
+			{% if taille == '50%' %}
+				{% set col = ['col-md-3','col-md-9'] %}
+			{% endif %}
+			<div class="col-md-12">
+				<div class="about-detail mt-40">
+					<div class="row">
+						{% if content.field_titre|field_value|render|trim|striptags is not empty %}
+							<div class="col-12">
+								<div class="heading-part mb-30 mb-xs-15">
+									<h2 class="main_title ">{{ content.field_titre }}</h2>
+								</div>
+							</div>
+						{% endif %}
+
+						{% if val|render|striptags == 'Gauche' %}
+							<div class="{{ col[0] }} mb-xs-30">
+								<div class="image-part center-xs">
+									{{ content.field_image }}
+								</div>
+							</div>
+							<div class="{{ col[1] }}">
+								{{ content.field_texte|raw }}
+							</div>
+						{% else %}
+							<div class="{{ col[1] }}">
+								{{ content.field_texte|raw }}
+							</div>
+							<div class="{{ col[0] }} mb-xs-30">
+								<div class="image-part center-xs">
+									{{ content.field_image }}
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if paragraph.bundle() == "texte_image_pleine" %}
+			<div class="col-md-12">
+				<div class="responsive-part">
+					<div class="row">
+						{% if content.field_titre|field_value|render|trim|striptags is not empty %}
+							<div class="col-md-12 partner-detail-main mt-40">
+								<div class="heading-part mb-30 mb-xs-15">
+									<h2 class="main_title">{{ content.field_titre }}</h2>
+								</div>
+							</div>
+						{% endif %}
+						<div class="col-md-12 w-100 mb-2 text-center">
+							{{ content.field_image }}
+						</div>
+						<div class="col-md-12 text-align-justify">
+							{{ content.field_texte|raw }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% if paragraph.bundle() == "liste_de_contenu" %}
+			<div class="col-md-12">
+				<div class="responsive-part">
+					<div class="row">
+						{% if content.field_titre|field_value|render|trim|striptags is not empty %}
+							<div class="col-md-12 partner-detail-main mt-40">
+								<div class="heading-part mb-30 mb-xs-15">
+									<h2 class="main_title">{{ content.field_titre }}</h2>
+								</div>
+							</div>
+						{% endif %}
+						<div class="col-md-12 text-align-justify">
+							{{ content.field_vue }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+
+		{% if paragraph.bundle() == "texte_seulement" %}
+			<div class="col-md-12">
+				<div class="responsive-part">
+					<div class="row">
+						{% if content.field_titre|field_value|render|trim|striptags is not empty %}
+							<div class="col-md-12 partner-detail-main mt-40">
+								<div class="heading-part mb-30 mb-xs-15">
+									<h2 class="main_title">{{ content.field_titre }}</h2>
+								</div>
+							</div>
+						{% endif %}
+						<div class="col-md-12 w-100 mb-2 text-center">
+							{{ content.field_image }}
+						</div>
+						<div class="col-md-12 text-align-justify">
+							{{ content.field_texte|raw }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if paragraph.bundle() == "titre_seulement" %}
+			<div class="col-md-12">
+				<div class="responsive-part">
+					<div class="row">
+						<div class="col-md-12 partner-detail-main mt-40">
+							<div class="heading-part mb-30 mb-xs-15">
+								<h2 class="main_title">{{ content.field_titre }}</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+
+		{% if paragraph.bundle() == "texte_avec_picto" %}
+			<div class="col-md-12">
+				<div class="responsive-part">
+					<div class="row mb-4">
+						<div class="col-sm-4 col-md-2 col-lg-1 w-100 mb-2 text-center">
+							{{ content.field_image }}
+						</div>
+						<div class="col-sm-8 col-md-10 col-lg-11 text-align-justify d-flex align-items-center">
+							{{ content.field_texte|raw }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+	</div>
+{% endblock %}

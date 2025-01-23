@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+	{% import _self as menus %}
+	{% if items %}
+		{% if menu_level == 0 %}
+			<ul{{attributes}} class="nav navbar-nav">
+			{% else %}
+				<ul class="sub-menu-level2">
+				{% endif %}
+				{% for item in items %}
+					{% set classes = [
+                    'level3',
+                     item.below ? 'level dropdown' : ''
+                ] %}
+					<li{{item.attributes.addClass(classes)}}>
+						{% if item.is_expanded %}
+							<span class="opener plus"></span>
+						{% endif %}
+						<a href="{{ item.url }}" class="page-scroll">
+							<i class="fa fa-angle-right" aria-hidden="true"></i>
+							{{ item.title }}
+						</a>
+						{% if item.is_expanded %}
+							{% if loop.index == 1 %}
+								<div class="megamenu full mobile-sub-menu">
+									<div class="menu-container-fluid">
+										<div class="megamenu-inner">
+											<div class="megamenu-inner-top">
+												<div class="row ">
+													<div class="col-12 left-p ">
+														<div class="row">
+															{% for link in item.below %}
+																<div class="{{ loop.last ? 'col-lg-6 level2' : 'col-lg-2 level2' }}">
+																	<a href="{{ link.url }}">
+																		<span>{{link.title}}</span>
+																	</a>
+																	{{menus.menu_links(link.below, attributes, menu_level + 1)}}
+																</div>
+															{% endfor %}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% else %}
+								<div class="megamenu mobile-sub-menu">
+									<div class="megamenu-inner">
+										<div class="megamenu-inner-top">
+											<ul class="sub-menu-level1">
+												<li class="level2">
+													{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+
+							{% endif %}
+
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endmacro %}

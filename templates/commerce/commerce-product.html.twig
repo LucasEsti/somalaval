@@ -1,0 +1,204 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{attributes}}>
+	<section class="batiment meme_gamme">
+		<div class="row">
+			<div class="col-lg-5 col-md-5 col-xl-4 mb-xs-30 ">
+				{% if product.field_promotion|field_target_entity.display_name.value  %}
+					<span class="sale-label">
+						<span>-
+							{{ product.field_promotion|field_target_entity.display_name.value  }}</span>
+					</span>
+				{% endif %}
+				<div class="product-image mb-3">
+					{% if product.field_images|field_value|length == 1 %}
+						{{ drupal_image(product.field_images|field_target_entity.uri.value ) }}
+					{% else %}
+						{% for image in product.field_images|field_target_entity %}
+							{% if image.uri.value is not empty %}
+								{{ drupal_image(image.uri.value) }}
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>
+                               
+                                <div class="picto d-flex justify-content-center align-items-center">
+                                    {% set types = product.field_type|field_target_entity %}
+                                    {% set counte = 0 %}
+                                        {% for type in types %}
+                                            
+                                            {% if  type.name.value  == 'A l\'eau' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/eau.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            
+                                            {% if  type.name.value == 'A l\'huile' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/huile.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  type.name.value == 'Airless' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/airless.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  type.name.value == 'Intérieur' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/interieur.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  type.name.value == 'Extérieur' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/exterieur.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  type.name.value == 'Lavable' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/lavable.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  type.name.value == 'Machine à teinter' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/machine-teinte.png" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  type.name.value == 'Résistant Fissure' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/resistant-fissure.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if type.name.value == 'Rouleau & Brosse' %}
+                                                {% set counte = counte + 1 %}
+                                                <img src="/{{ directory }}/assets/img/rouleau-brosse.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if type.name.value == 'Corrosif' %}
+                                                {% set counte = counte + 1 %}
+                                                <img class="item" src="/{{ directory }}/assets/img/corrosif.webp" alt="" title="corrosif">
+                                            {% endif %}
+                                        {% endfor %}
+                                        
+                                        {% if counte == 0 %}
+                                            {% if  types.name.value  == 'A l\'eau' %}
+                                                <img src="/{{ directory }}/assets/img/eau.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            
+                                            {% if  types.name.value == 'A l\'huile' %}
+                                                <img src="/{{ directory }}/assets/img/huile.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  types.name.value == 'Airless' %}
+                                                <img src="/{{ directory }}/assets/img/airless.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  types.name.value == 'Intérieur' %}
+                                                <img src="/{{ directory }}/assets/img/interieur.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  types.name.value == 'Extérieur' %}
+                                                <img src="/{{ directory }}/assets/img/exterieur.webp" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  types.name.value == 'Lavable' %}
+                                                <img src="/{{ directory }}/assets/img/lavable.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  types.name.value == 'Machine à teinter' %}
+                                                <img src="/{{ directory }}/assets/img/machine-teinte.png" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if  types.name.value == 'Résistant Fissure' %}
+                                                <img src="/{{ directory }}/assets/img/resistant-fissure.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if types.name.value == 'Rouleau & Brosse' %}
+                                                <img src="/{{ directory }}/assets/img/rouleau-brosse.png" alt="" title="{{ type.name.value }}">
+                                            {% endif %}
+                                            {% if types.name.value == 'Corrosif' %}
+                                                <img class="item" src="/{{ directory }}/assets/img/corrosif.webp" alt="" title="corrosif">
+                                            {% endif %}
+                                        {% endif %}
+                                </div>
+			</div>
+                    
+			<div class="col-lg-7 col-md-7 col-xl-8">
+				<div class="product-detail-main">
+					<div class="product-item-details">
+						{{ drupal_view('client', 'block_2', product_entity.product_id.value) }}
+						<h1 class="product-item-name mr-2">{{ product.title }}</h1>
+						<div class="product-description">
+							<p>{{ product.body }}</p>
+						</div>
+						<div class="information">
+							<div class="row">
+								<div class="col-md-6 mb-4 order-2 ">
+									<h3>PROPRIÉTÉS</h3>
+									{{ product.field_proprietes }}
+								</div>
+								<div class="col-md-6 mb-4 order-1 order-lg-2">
+									<h3>DESTINATION</h3>
+									{{ product.field_destination }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<h3>RENDEMENT</h3>
+									<div class="row">
+										<div class="col-md-12">
+											{{ product.field_rendement|raw }}
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 package mb-4">
+									<h3>CONDITIONNEMENT</h3>
+									<div class="row">
+										<div class="col-md-12">
+											{{ product.field_conditionnement|raw }}
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<h3>TEINTES</h3>
+									{{ product.field_description_teintes|raw }}
+
+									<div class="nuancier">
+										<ul class="row">
+
+											{% if product.field_teintes|field_value|length == 1 %}
+												<li class="col-4 col-lg-2 col-xl-1">
+													{{ drupal_image(product.field_teintes|field_target_entity
+                                                                .field_image.entity.uri.value) }}
+													<div class="color">{{ product.field_teintes|field_target_entity.title.value }}</div>
+												</li>
+											{% else %}
+												{% for teintes in product.field_teintes|field_target_entity %}
+													<li class="col-4 col-lg-2 col-xl-1">
+														{% if teintes.field_image.entity.uri.value is not empty %}
+															{{ drupal_image(teintes.field_image.entity.uri.value) }}
+														{% endif %}
+														<div class="color">{{ teintes.title.value }}</div>
+													</li>
+												{% endfor %}
+											{% endif %}
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="cta">
+						{% if product.field_fiche|field_value %}
+							<a href="{{ product.field_fiche|field_value }}" download target="_blank" class="btn btn-color">Télécharger la fiche technique</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</article>
+{{ drupal_view('meme_gamme', 'block_1', product.field_sous_categorie|field_target_entity.id) }}

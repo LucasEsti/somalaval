@@ -1,0 +1,260 @@
+<div class="main">
+	<header class="container-full-sm" id="header">
+		<div class="header-middle">
+			<div class="container position-s">
+				<div class="header-inner">
+					<div class="row header-position">
+						<div class="col-lg-3">
+							<div class="navbar-header">
+								<a class="navbar-brand page-scroll" href="/">
+									<img alt="Somalaval" src="/{{ directory }}/assets/img/logo_somalaval.webp">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-8 menu-width position-initial">
+							<div id="menu" class="navbar-collapse collapse left-side">
+								{% if page.navigation %}
+									{{ page.navigation }}
+								{% endif %}
+							</div>
+						</div>
+						<div class="col-lg-1 float-none-sm">
+							<div class="header-right-link right-side">
+								<ul>
+									<li class="search-box">
+										<a href="#">
+											<span></span>
+										</a>
+									</li>
+									<div class="search-closer right-side"></div>
+									<li class="side-toggle">
+										<button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+											<i class="fa fa-bars"></i>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-header d-block d-lg-none mobile-header col-6">
+			<a class="navbar-brand page-scroll" href="/">
+				<img alt="Somalaval" src="/{{ directory }}/assets/img/logo_somalaval.webp">
+			</a>
+		</div>
+
+	</header>
+	<!-- HEADER END -->
+
+	<!-- BANNER STRAT -->
+	<div class="banner">
+		{% if page.header %}
+			{{ page.header }}
+		{% endif %}
+	</div>
+	<!-- BANNER END -->
+
+	<!-- Bread Crumb STRAT -->
+	{% if page.branding %}
+		<div class="row">
+			<div class="container">{{ page.branding }}</div>
+		</div>
+	{% endif %}
+	<!-- Bread Crumb END -->
+
+
+	<!-- SUB-BANNER START -->
+	{% if page.precontent %}
+		<section class="ptb-95">
+			<div class="container">
+				{{ page.precontent }}
+				<!-- CONTAINER START -->
+			</div>
+		</section>
+	{% endif %}
+	<!-- SUB-BANNER END -->
+
+
+	<!-- FOOTER START -->
+	<section class="newsletter-section">
+		<div class="container">
+			<div class="footer-middle">
+				<div class="row">
+					<div class="col-xl-5 col-lg-12 justify-content-center align-self-center">
+						<div class="site-link">
+							<h2>newsletter</h2>
+							<p>Vous souhaitez découvrir en exclusivité nos offres spéciales et nos promotions ?</p>
+							<p>Rien de plus simple: inscrivez-vous à notre newsletter !</p>
+						</div>
+
+					</div>
+					<div class="col-xl-7 col-lg-12 justify-content-center align-self-center">
+						<div class="newsletter">
+							<div class="newsletter-inner center-sm">
+								<div class="row">
+									<div class="col-lg-12">
+										{% if page.prefooter %}
+											{{ page.prefooter }}
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</section>
+	<div class="footer">
+		<div class="container">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<div class="row">
+						<div class="col-lg-5 f-col footer-middle">
+							<div class="row">
+								<div class="f-logo col-8">
+									<a href="/" class="">
+										<img src="/{{ directory }}/assets/img/logo_somalaval.webp" alt="Somalaval">
+									</a>
+								</div>
+								<div class="f-logo col-4">
+									<a href="/" class="">
+										<img src="/{{ directory }}/assets/img/bonhomme_somalaval.webp" class="float-right
+																																																																																																																																																																																																																																																																																																																																																																																																																																																								                                        f-mobile" alt="Somalaval">
+									</a>
+								</div>
+							</div>
+							<div class="footer-static-block">
+								<span class="opener plus"></span>
+								<h3 class="title">Showroom Antananarivo
+									<span></span>
+								</h3>
+								<ul class="footer-block-contant address-footer">
+									<li class="item">
+										<i class="fa fa-map-marker"></i>
+										<p>Business park Anosivavaka Bloc E, Antananarivo, Madagascar</p>
+									</li>
+									<li class="item">
+										<i class="fa fa-envelope"></i>
+										<p>
+											<a href="#">info@somalaval.com</a>
+										</p>
+									</li>
+									<li class="item">
+										<i class="fa fa-phone"></i>
+										<p>(261) 32 11 111 06</p>
+										<p>(261) 20 23 219 33</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-4 f-col footer-middle-left">
+							<div class="f-logo"></div>
+							<div class="footer-static-block">
+								<span class="opener plus"></span>
+								<h3 class="title">Usine Toamasina
+									<span></span>
+								</h3>
+								<ul class="footer-block-contant address-footer">
+									<li class="item">
+										<i class="fa fa-map-marker"></i>
+										<p>PK 3,5 – Route d’Antananarivo- BP 426, Toamasina, Madagascar</p>
+									</li>
+									<li class="item">
+										<i class="fa fa-envelope"></i>
+										<p>
+											<a href="#">contact@somalaval.com</a>
+										</p>
+									</li>
+									<li class="item">
+										<i class="fa fa-phone"></i>
+										<p>(261) 32 11 111 05</p>
+										<p>(261) 20 53 338 08</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-3 f-col footer-middle-right">
+							<div class="f-logo text-align-center">
+								<a href="/" class="">
+									<img src="/{{ directory }}/assets/img/bonhomme_somalaval.webp" alt="Somalaval">
+								</a>
+							</div>
+							<div class="footer-static-block">
+								<span class="opener plus"></span>
+								<h3 class="title">Liens utiles
+									<span></span>
+								</h3>
+								{% if page.footer %}
+									{{ page.footer }}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="footer-bottom">
+					<div class="row">
+						<div class="col-xl-4 col-lg-12 ">
+							<div class="footer_social pt-xs-15 center-sm">
+								<ul class="social-icon">
+									<li>
+										<a title="Facebook" class="facebook" href="https://www.facebook.com/somalavalsa" target="_blank">
+											<i class="fa fa-facebook"></i>
+										</a>
+									</li>
+									<li>
+										<a title="Linkedin" class="linkedin" href="https://www.linkedin.com/company/somalaval" target="_blank">
+											<i class="fa fa-linkedin"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xl-4 col-lg-12 align-center">
+							<div class="copy-right ">© 2021 Tous droits réservés. SOMALAVAL.</div>
+						</div>
+						<div class="col-xl-4 col-lg-12">
+							<div class="payment"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="scroll-top">
+		<div id="scrollup"></div>
+	</div>
+	<!-- FOOTER END -->
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-233467582-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-233467582-1');
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTMWTHPL9R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XTMWTHPL9R');
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-187415191-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-187415191-1');
+</script>

@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set body_classes = [
+		'product-page',
+    logged_in ? 'user-logged-in',
+    not root_path ? 'homepage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    path_info.args ? 'path-' ~ path_info.args,
+    db_offline ? 'db-offline',
+    theme.settings.navbar_position ? 'navbar-is-' ~ theme.settings.navbar_position,
+    theme.has_glyphicons ? 'has-glyphicons',
+    'language-' ~ language,
+		path('<current>') == '/histoire' ? 'not-front' : '',
+		path('<current>') in ['/produit', '/batiment', '/bois', '/auto', '/marine','/sols_et_routes',
+		'/anticorrosion', '/autre_produits_du_batiment'] ? 'not-front page-shop': '',
+		path('<current>') == '/guide-pratiques' ? 'not-front guide': '',
+		path('<current>') == '/news' ? 'not-front blog': '',
+		path('<current>') == '/contact' ? 'not-front page-contact': '',
+		path('<current>') == '/references' ? 'not-front references': '',
+		path('<current>') == '/revendeurs' ? 'not-front revendeurs': '',
+		path('<current>') == '/nuancier' ? 'not-front page-nuancier': '',
+  ]
+%}
+<!DOCTYPE html>
+<html{{html_attributes}}>
+	<head>
+	    <meta name="google-site-verification" content="WXSg7esG9YFjdrjt23GEvukL7tCtQEqOBdvMwdI75lo" />
+		<head-placeholder token="{{ placeholder_token }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>{{ head_title|safe_join(' | ') }}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+		<css-placeholder token="{{ placeholder_token }}">
+			<js-placeholder token="{{ placeholder_token }}">
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	</head>
+	<body{{attributes.addClass(body_classes)}}>
+		{{ page_top }}
+		{{ page }}
+		{{ page_bottom }}
+		<js-bottom-placeholder token="{{ placeholder_token }}">
+	</body>
+</html>
