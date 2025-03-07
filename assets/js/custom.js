@@ -342,6 +342,11 @@
         magnific_popup_image();
         dropdowns();
         
+        document.getElementById('privacy-policy').addEventListener('change', function () {
+            // Active ou désactive le bouton Envoyer selon l'état de la case à cocher
+            var submitButton = document.getElementById('submit-email');
+            submitButton.disabled = !this.checked;
+        });
         
         document.getElementById('download-btn').addEventListener('click', function () {
             // Afficher le modal
