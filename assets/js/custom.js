@@ -351,7 +351,15 @@
             var fileUrl = document.getElementById('download-link').getAttribute('href'); // RÃ©cupÃ¨re le lien du fichier
 
             if (email) {
-                console.log(email);
+                fetch('store_email.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
+                }).then(response => response.text()).then(data => {
+                    console.log('Votre email a Ã©tÃ© enregistrÃ©. Le tÃ©lÃ©chargement va commencer.');
+                    document.getElementById('email-modal').style.display = 'none';
+                    //Sdocument.getElementById('download-link').click();
+                });
             } else {
                 console.log('Veuillez entrer un email valide.');
             }
