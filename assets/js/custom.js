@@ -351,7 +351,7 @@
             var fileUrl = document.getElementById('download-link').getAttribute('href'); // RÃ©cupÃ¨re le lien du fichier
 
             if (email) {
-                fetch('https://somalaval.com/themes/apiqa/assets/js/store_email.php', {
+                fetch('https://somalaval.com/somalaval/modules/custom/apiqa/store_email.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
