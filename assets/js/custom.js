@@ -342,9 +342,18 @@
         magnific_popup_image();
         dropdowns();
         
+        /*
         document.getElementById('download-btn').addEventListener('click', function () {
             document.getElementById('email-modal').style.display = 'block';
         });
+        <button id="download-btn" class="btn btn-color">Télécharger la fiche technique</button>
+                                                            <div id="email-modal" style="display: none;">
+                                                                <label for="email">Entrez votre email :</label>
+                                                                <input type="email" id="email" required>
+                                                                <button id="submit-email">Envoyer</button>
+                                                            </div>
+
+                                                            <a id="download-link" href="{{ product.field_fiche|field_value }}" download style="display: none;"></a>
 
         document.getElementById('submit-email').addEventListener('click', function () {
             var email = document.getElementById('email').value;
@@ -363,7 +372,7 @@
             } else {
                 console.log('Veuillez entrer un email valide.');
             }
-        });
+        });*/
         
     });
 
