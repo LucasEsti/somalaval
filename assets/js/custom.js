@@ -360,10 +360,14 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
-                }).then(response => response.text()).then(data => {
+                }).then(response => response.text())
+                .then(data => {
                     console.log('Votre email a été enregistré. Le téléchargement va commencer.');
                     $('#email-modal').modal('hide'); // Fermer le modal
                     document.getElementById('download-link').click(); // Lancer le téléchargement
+                })
+                .catch(error => {
+                    console.error('Erreur :', error);
                 });
             } else {
                 // Afficher un message d'erreur si l'email est invalide
