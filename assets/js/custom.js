@@ -367,6 +367,7 @@
                     document.getElementById('download-link').click(); // Lancer le téléchargement
                 })
                 .catch(error => {
+                    $('#email-modal').modal('hide');
                     console.error('Erreur :', error);
                 });
             } else {
