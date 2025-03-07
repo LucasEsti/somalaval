@@ -344,28 +344,34 @@
         
         
         document.getElementById('download-btn').addEventListener('click', function () {
-            document.getElementById('email-modal').style.display = 'block';
+            // Afficher le modal
+            $('#email-modal').modal('show');
         });
-        
 
         document.getElementById('submit-email').addEventListener('click', function () {
             var email = document.getElementById('email').value;
-            var fileUrl = document.getElementById('download-link').getAttribute('href'); // RÃ©cupÃ¨re le lien du fichier
+            var fileUrl = document.getElementById('download-link').getAttribute('href'); // Récupère le lien du fichier
 
-            if (email) {
+            // Validation de l'email
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (emailPattern.test(email)) {
+                // Si l'email est valide, envoyer les données
                 fetch('https://somalaval-ai.xnr.afb.mybluehost.me/store_email.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
                 }).then(response => response.text()).then(data => {
-                    console.log('Votre email a Ã©tÃ© enregistrÃ©. Le tÃ©lÃ©chargement va commencer.');
-                    document.getElementById('email-modal').style.display = 'none';
-                    //Sdocument.getElementById('download-link').click();
+                    console.log('Votre email a été enregistré. Le téléchargement va commencer.');
+                    $('#email-modal').modal('hide'); // Fermer le modal
+                    document.getElementById('download-link').click(); // Lancer le téléchargement
                 });
             } else {
+                // Afficher un message d'erreur si l'email est invalide
                 console.log('Veuillez entrer un email valide.');
+                alert("Veuillez entrer un email valide.");
             }
         });
+
         
     });
 
