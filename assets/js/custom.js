@@ -342,7 +342,7 @@
         magnific_popup_image();
         dropdowns();
         
-        /*
+        
         document.getElementById('download-btn').addEventListener('click', function () {
             document.getElementById('email-modal').style.display = 'block';
         });
@@ -365,7 +365,7 @@
             } else {
                 console.log('Veuillez entrer un email valide.');
             }
-        });*/
+        });
         
     });
 
