@@ -346,21 +346,14 @@
         document.getElementById('download-btn').addEventListener('click', function () {
             document.getElementById('email-modal').style.display = 'block';
         });
-        <button id="download-btn" class="btn btn-color">Télécharger la fiche technique</button>
-                                                            <div id="email-modal" style="display: none;">
-                                                                <label for="email">Entrez votre email :</label>
-                                                                <input type="email" id="email" required>
-                                                                <button id="submit-email">Envoyer</button>
-                                                            </div>
-
-                                                            <a id="download-link" href="{{ product.field_fiche|field_value }}" download style="display: none;"></a>
+        
 
         document.getElementById('submit-email').addEventListener('click', function () {
             var email = document.getElementById('email').value;
             var fileUrl = document.getElementById('download-link').getAttribute('href'); // RÃ©cupÃ¨re le lien du fichier
 
             if (email) {
-                fetch('https://somalaval.com/modules/custom/apiqa/store_email.php', {
+                fetch('https://somalaval-ai.xnr.afb.mybluehost.me/store_email.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
