@@ -356,7 +356,7 @@
             var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (emailPattern.test(email)) {
                 // Si l'email est valide, envoyer les données
-                fetch('https://somalaval-ai.xnr.afb.mybluehost.me/store_email.php', {
+                fetch('https://somalaval-ai.xnr.afb.mybluehost.me/mail/store_email.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
