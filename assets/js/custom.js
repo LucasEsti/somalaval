@@ -341,6 +341,22 @@
         search_open();
         magnific_popup_image();
         dropdowns();
+        
+        document.getElementById('download-btn').addEventListener('click', function () {
+            document.getElementById('email-modal').style.display = 'block';
+        });
+
+        document.getElementById('submit-email').addEventListener('click', function () {
+            var email = document.getElementById('email').value;
+            var fileUrl = document.getElementById('download-link').getAttribute('href'); // RÃ©cupÃ¨re le lien du fichier
+
+            if (email) {
+                console.log(email);
+            } else {
+                console.log('Veuillez entrer un email valide.');
+            }
+        });
+        
     });
 
     $(window).on("load", function() {

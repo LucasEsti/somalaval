@@ -29,7 +29,7 @@ document.getElementById('submit-email').addEventListener('click', function () {
             //Sdocument.getElementById('download-link').click();
         });
     } else {
-        alert('Veuillez entrer un email valide.');
+        console.log('Veuillez entrer un email valide.');
     }
 });
 </script>
