@@ -225,11 +225,9 @@
                                                             </div>
 
                                                             <!-- Lien pour le téléchargement -->
-                                                            <a id="download-link" product="{{ product.title }}" href="{{ product.field_fiche|field_value }}" download style="display: none;"></a>
+                                                            {{ dump(product.title) }}
+                                                            <a id="download-link" product="{{ product.title|field_value }}" href="{{ product.field_fiche|field_value }}" download style="display: none;"></a>
                                                         
-                                                        
-
-                                                            
 						{% endif %}
 					</div>
 				</div>
