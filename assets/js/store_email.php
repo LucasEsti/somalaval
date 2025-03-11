@@ -25,12 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         $stmt->execute([$email, $fileUrl]);
 
         // Envoyer une notification par email
-        $to = "webmaster@fitaratra.mg";
+        $to = "webmaster@fitaratra.mg, showroom@somalaval.com";
         $subject = "Téléchargement de fiche technique";
+        $subject = mb_encode_mimeheader($subject, "UTF-8", "B", "\r\n");
         $message = "L'email $email a téléchargé le fichier : $fileUrl";
-        $headers = "From: no-reply@somalaval.com";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";  // Assurer que l'email est en UTF-8
-        $headers .= "Content-Transfer-Encoding: 8bit\r\n";  // Encodage du contenu du message en 8 bits
+        $headers = "From: no-reply@somalaval.com\r\n";
+        $headers .= "Reply-To: no-reply@somalaval.com\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
         mail($to, $subject, $message, $headers);
         echo "Success";

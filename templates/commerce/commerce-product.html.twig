@@ -193,10 +193,39 @@
 					</div>
 					<div class="cta">
 						{% if product.field_fiche|field_value %}
-							<!-- Bouton de téléchargement -->
-                                                        <a href="{{ product.field_fiche|field_value }}" download target="_blank" class="btn btn-color">
-                                                            Télécharger la fiche technique
-                                                        </a>
+							<button id="download-btn" class="btn btn-color">Télécharger la fiche technique</button>
+
+                                                            <!-- Modal pour entrer l'email -->
+                                                            <div id="email-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+                                                              <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                  <div class="modal-header">
+                                                                    <h5 class="modal-title" id="emailModalLabel">Entrez votre email</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                      <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                  </div>
+                                                                  <div class="modal-body">
+                                                                    <label for="email">Entrez votre email :</label>
+                                                                    <input type="email" id="email" class="form-control" required>
+                                                                    
+                                                                    <!-- Case à cocher pour accepter la politique de confidentialité -->
+                                                                        <div>
+                                                                            <input type="checkbox" id="privacy-policy" required>
+                                                                            <label for="privacy-policy">J'accepte la <a href="https://somalaval.com/news/politique-confidentialite" target="_blank">politique de confidentialité</a>.</label>
+                                                                        </div>
+                                                                    
+                                                                  </div>
+                                                                  <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                                    <button id="submit-email" class="btn btn-primary" disabled>Envoyer</button>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+
+                                                            <!-- Lien pour le téléchargement -->
+                                                            <a id="download-link" href="{{ product.field_fiche|field_value }}" download style="display: none;"></a>
                                                         
                                                         
 
