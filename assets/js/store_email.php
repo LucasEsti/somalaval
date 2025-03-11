@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
         mail($to, $subject, $message, $headers);
-        
+        $product = $_POST['product'];
         $to = $_POST['email'];
-        $subject = "Votre fiche technique " + $_POST['productName'] +  " – Nous sommes là pour vous aider";
+        $subject = "Votre fiche technique $product – Nous sommes là pour vous aider";
         $subject = mb_encode_mimeheader($subject, "UTF-8", "B", "\r\n");
         $message = "Cher(e) client(e),\r\n
             Merci d’avoir téléchargé la fiche technique de notre produit [Nom du produit]. Nous espérons qu’elle vous sera utile !\r\n
