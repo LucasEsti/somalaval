@@ -355,7 +355,8 @@
 
         document.getElementById('submit-email').addEventListener('click', function () {
             var email = document.getElementById('email').value;
-            var fileUrl = document.getElementById('download-link').getAttribute('href'); // Récupère le lien du fichier
+            var fileUrl = document.getElementById('download-link').getAttribute('href');
+            var productName = document.getElementById('download-link').getAttribute('product');
 
             // Validation de l'email
             var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -364,7 +365,7 @@
                 fetch('https://somalaval-ai.xnr.afb.mybluehost.me/mail/store_email.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl)
+                    body: 'email=' + encodeURIComponent(email) + '&file_url=' + encodeURIComponent(fileUrl) + '&product=' + productName
                 }).then(response => response.text())
                 .then(data => {
                     console.log('Votre email a été enregistré. Le téléchargement va commencer.');
