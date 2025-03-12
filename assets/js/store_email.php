@@ -48,12 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
             Merci d’avoir téléchargé la fiche technique de notre produit $product. Nous espérons qu’elle vous sera utile !\r\n
             Si vous avez des questions ou besoin de précisions, notre équipe se tient à votre disposition pour vous accompagner et vous fournir des conseils adaptés à vos besoins.
             Vous souhaitez en savoir plus ? Répondez simplement à cet e-mail ou rendez vous à notre showroom Anosivavaka, Antananarivo ou à notre usine de Tamatave.\r\n
-            À bientôt,\r\n
+            À bientôt,\r\n\r\n
+            L’équipe Somalaval\r\n
             showroom@somalaval.com\r\n
-            Commercial SOMALAVAL Usine : RN2 PK 3.5, Toamasina \r\n 
-            Showroom : Business Park Anosivavaka, Bâtiment E \r\n
-            032 11 111 06\r\n
-            020 53 338 08\r\n
+            Usine Toamasina : RN2 PK 3.5, Barikadimy – 032 11 111 05\r\n
+            Showroom Antananarivo : Route du Pape, Anosivavaka Business Park – 032 11 111 06\r\n
             ";
         $headers = "From: showroom@somalaval.com\r\n";
         $headers .= "Reply-To: showroom@somalaval.com\r\n";
