@@ -75,10 +75,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
                 <table align='center' cellpadding='0' cellspacing='0' border='0'>
                     <tr>
                         <td style='padding: 10px;'>
-                            <img src='https://www.somalaval.com/themes/apiqa/assets/img/somalaval.gif' alt='Image 1' width='150' style='display: block;'>
+                            <img src='https://somalaval.com/themes/apiqa/assets/img/somalaval.gif' alt='Image 1' width='150' style='display: block;'>
                         </td>
                         <td style='padding: 10px;'>
-                            <img src='https://www.somalaval.com/themes/apiqa/assets/img/60.png' alt='Image 2' width='150' style='display: block;'>
+                            <img src='https://somalaval.com/themes/apiqa/assets/img/60.png' alt='Image 2' width='150' style='display: block;'>
                         </td>
                     </tr>
                 </table>
@@ -91,6 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n"; // Passage en HTML
+        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+        $headers .= "Message-ID: <" . md5(uniqid()) . "@somalaval.com>\r\n"; // Identifiant unique
 
         mail($to, $subject, $message, $headers);
         

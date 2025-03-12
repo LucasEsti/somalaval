@@ -356,10 +356,11 @@
         });
 
         document.getElementById('submit-email').addEventListener('click', function () {
+            submitButton.disabled = true;
             var email = document.getElementById('email').value;
             var fileUrl = document.getElementById('download-link').getAttribute('href');
             var productName = document.getElementById('download-link').getAttribute('product');
-            submitButton.disabled = true;
+            
             // Validation de l'email
             var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (emailPattern.test(email)) {
