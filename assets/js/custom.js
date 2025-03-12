@@ -377,6 +377,7 @@
                 })
                 .catch(error => {
                     $('#email-modal').modal('hide');
+                    alert("Une erreur est survenu");
                     submitButton.disabled = false;
                     console.error('Erreur :', error);
                 });
