@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
                             <img src='https://www.somalaval.com/themes/apiqa/assets/img/somalaval.gif' alt='Image 1' width='150' style='display: block;'>
                         </td>
                         <td style='padding: 10px;'>
-                            <img src='https://www.somalaval.com/60.png' alt='Image 2' width='150' style='display: block;'>
+                            <img src='https://www.somalaval.com/themes/apiqa/assets/img/60.png' alt='Image 2' width='150' style='display: block;'>
                         </td>
                     </tr>
                 </table>
@@ -88,9 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         ";
         $headers = "From: showroom@somalaval.com\r\n";
         $headers .= "Reply-To: showroom@somalaval.com\r\n";
+        
         $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-        $headers .= "Content-Transfer-Encoding: 8bit\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n"; // Passage en HTML
 
         mail($to, $subject, $message, $headers);
         
