@@ -342,9 +342,11 @@
         magnific_popup_image();
         dropdowns();
         
+        var submitButton = document.getElementById('submit-email');
+        
         document.getElementById('privacy-policy').addEventListener('change', function () {
             // Active ou désactive le bouton Envoyer selon l'état de la case à cocher
-            var submitButton = document.getElementById('submit-email');
+            
             submitButton.disabled = !this.checked;
         });
         
@@ -357,7 +359,7 @@
             var email = document.getElementById('email').value;
             var fileUrl = document.getElementById('download-link').getAttribute('href');
             var productName = document.getElementById('download-link').getAttribute('product');
-
+            submitButton.disabled = true;
             // Validation de l'email
             var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (emailPattern.test(email)) {
@@ -370,6 +372,7 @@
                 .then(data => {
                     console.log('Votre email a été enregistré. Le téléchargement va commencer.');
                     $('#email-modal').modal('hide'); // Fermer le modal
+                    submitButton.disabled = false;
                     document.getElementById('download-link').click(); // Lancer le téléchargement
                 })
                 .catch(error => {

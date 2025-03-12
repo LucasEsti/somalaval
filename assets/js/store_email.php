@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         $subject = "Votre fiche technique $product – Nous sommes là pour vous aider";
         $subject = mb_encode_mimeheader($subject, "UTF-8", "B", "\r\n");
         $message = "Cher(e) client(e),\r\n
-            Merci d’avoir téléchargé la fiche technique de notre produit [Nom du produit]. Nous espérons qu’elle vous sera utile !\r\n
+            Merci d’avoir téléchargé la fiche technique de notre produit $product. Nous espérons qu’elle vous sera utile !\r\n
             Si vous avez des questions ou besoin de précisions, notre équipe se tient à votre disposition pour vous accompagner et vous fournir des conseils adaptés à vos besoins.
             Vous souhaitez en savoir plus ? Répondez simplement à cet e-mail ou rendez vous à notre showroom Anosivavaka, Antananarivo ou à notre usine de Tamatave.\r\n
             À bientôt,\r\n
