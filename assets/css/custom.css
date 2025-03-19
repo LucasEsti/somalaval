@@ -198,6 +198,37 @@ _______________________________________________________*/
         text-align: right !important;
     }
 
+    /*BANDEAU START*/
+    .marquee h1{
+        font-size: 5em;
+        white-space: nowrap;
+        text-transform: uppercase
+    }
+    .marquee {
+      border-top: 1px solid #1898ae;
+      border-bottom: 1px solid #1898ae;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+    }
+    .marquee span {
+        display: inline-block;
+        padding-left: 100%;
+        animation: marquee 14s linear infinite;
+    }
+    @keyframes marquee {
+        from { transform: translateX(0%); }
+        to { transform: translateX(-100%); }
+    }
+      .bandeau {
+        margin-top: -7px;
+        background-color: #1898ae !important;
+      } 
+      .marquee a {
+        color : #003049;
+      }
+    /*BANDEAU START*/
+    
     .dark-bg h1,
     .dark-bg h2,
     .dark-bg h3,
@@ -3080,7 +3111,7 @@ _______________________________________________________*/
 
     .sidebar-title span {
         background: #000024;
-        none repeat scroll 0 0;
+        background: none repeat scroll 0 0;
         height: 3px;
         position: absolute;
         top: 40px;
