@@ -199,6 +199,19 @@ _______________________________________________________*/
     }
 
     /*BANDEAU START*/
+    .bouton-promo {
+        border: 1px solid #003049;
+        padding: 6px 20px;
+        color: #ffffff;
+        background-color: #003049;
+        border-radius: 11px;
+    } 
+
+
+    .modal-content .close {
+        color: #e51f49;
+    }
+
     .marquee h1{
         font-size: 5em;
         white-space: nowrap;

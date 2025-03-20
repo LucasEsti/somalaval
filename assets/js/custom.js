@@ -148,6 +148,9 @@
             // nav:true
         });
         
+        //popup promo 
+        $('#exampleModalCenter').modal('show');
+        
         //        Lucas
         $('.picto2').owlCarousel({
             loop:false,
