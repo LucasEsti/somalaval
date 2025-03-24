@@ -218,8 +218,8 @@ _______________________________________________________*/
         text-transform: uppercase
     }
     .marquee {
-      border-top: 1px solid #1898ae;
-      border-bottom: 1px solid #1898ae;
+      border-top: 1px solid #ff000e;
+      border-bottom: 1px solid #ff000e;
         white-space: nowrap;
         overflow: hidden;
         display: flex;
@@ -235,10 +235,11 @@ _______________________________________________________*/
     }
       .bandeau {
         margin-top: -7px;
-        background-color: #1898ae !important;
+        background-color: #ff000e !important;
       } 
       .marquee a {
-        color : #ff004a;
+        color : #ffbf00;
+        font-weight: bold;
       }
     /*BANDEAU START*/
     
