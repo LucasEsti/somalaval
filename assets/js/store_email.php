@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         $stmt->execute([$email, $fileUrl]);
 
         // Envoyer une notification par email
-        $to = "webmaster@fitaratra.mg, showroom@somalaval.com, lie.lucas.razafindrambo@esti.mg, somalaval.analytique@gmail.com";
+        $to = "webmaster@fitaratra.mg, showroom@somalaval.com";
         $subject = "Téléchargement de fiche technique";
         $subject = mb_encode_mimeheader($subject, "UTF-8", "B", "\r\n");
         $message = "L'email $email a téléchargé le fichier : $fileUrl";
