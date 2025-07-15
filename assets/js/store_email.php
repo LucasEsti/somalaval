@@ -1,8 +1,44 @@
 <?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Brevo\Client\Configuration;
+use Brevo\Client\Api\TransactionalEmailsApi;
+use Brevo\Client\Model\SendSmtpEmail;
+
 // Autoriser les requêtes CORS
 header("Access-Control-Allow-Origin: *");  // Autorise toutes les origines (*)
 header("Access-Control-Allow-Methods: POST, OPTIONS");  // Autorise POST et OPTIONS
 header("Access-Control-Allow-Headers: Content-Type");
+
+/*
+NEW MAIL SYSTEM 
+ */
+function sendEmail($apiKey, $sender, $to, $subject, $content) {
+    $config = Configuration::getDefaultConfiguration()
+            ->setApiKey('api-key', $apiKey);
+
+    $apiInstance = new TransactionalEmailsApi(
+        new GuzzleHttp\Client(),
+        $config
+    );
+
+    $email = new SendSmtpEmail([
+        'subject'      => $subject,
+        'sender'       => $sender,
+        'to'           => $to,
+        'htmlContent'  => $content,
+        'params'       => ['name' => 'Dest'],          // remplace {{params.name}}
+        // facultatif : 'replyTo', 'cc', 'bcc', 'attachment', etc.
+    ]);
+
+    try {
+        $result = $apiInstance->sendTransacEmail($email);
+        var_dump($result);          // ID du message, date, etc.
+    } catch (Exception $e) {
+        echo 'Erreur : ', $e->getMessage();
+    }
+}
 
 // Connexion à la base de données
 $host = '127.0.0.1';
@@ -39,7 +75,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
-        mail($to, $subject, $message, $headers);
+        // mail($to, $subject, $message, $headers);
+        
+        $sender = ['email' => 'no-replay@batpro-madagascar.com'];
+        $to = [['email' => 'webmaster@fitaratra.mg'], ['email' => 'showroom@somalaval.com']];
+        $conf = json_decode(file_get_contents("./params.json"), true);
+        $apiKey = $conf['key'];
+        sendEmail($apiKey, $sender, $to, $subject, $message);
+        
         $product = $_POST['product'];
         $to = $_POST['email'];
         $subject = "Votre fiche technique $product – Nous sommes là pour vous aider";
