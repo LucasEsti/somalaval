@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
 
         // mail($to, $subject, $message, $headers);
         
-        $sender = ['email' => 'no-replay@batpro-madagascar.com'];
+        $sender = ['email' => 'no-reply@batpro-madagascar.com'];
         $to = [['email' => 'webmaster@fitaratra.mg'], ['email' => 'showroom@somalaval.com']];
         $conf = json_decode(file_get_contents("./params.json"), true);
         $apiKey = $conf['key'];
@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['file_
         
         //notification à l'utilisateur
         
-        echo "Success";
+        echo "Success upload";
     } else {
         echo "Invalid email or file URL";
     }
